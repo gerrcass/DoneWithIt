@@ -3,7 +3,7 @@ import { Image, ImageBackground, StyleSheet, View } from "react-native";
 
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
-import colors from "../config/colors";
+import defaultStyles from "../config/styles";
 
 export default function WelcomeScreen() {
   return (
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     paddingVertical: 20,
-    color: colors.black,
+    color: defaultStyles.colors.black,
   },
 });

@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
 import Screen from "../components/Screen";
-import colors from "../config/colors";
+import defaultStyles from "../config/styles";
 
 const listings = [
   {
@@ -40,6 +40,6 @@ export default function ListingsScreen() {
 const styles = StyleSheet.create({
   screen: {
     padding: 20,
-    backgroundColor: colors.light,
+    backgroundColor: defaultStyles.colors.light,
   },
 });
