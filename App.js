@@ -2,10 +2,13 @@ import React from "react";
 import AppTextInput from "./app/components/AppTextInput";
 import Screen from "./app/components/Screen";
 
+import AppPicker from "./app/components/AppPicker";
+
 export default function App() {
   return (
     <Screen>
-      <AppTextInput icon="email" placeholder="Users" />
+      <AppPicker icon="apps" placeholder="Category" />
+      <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
 }
