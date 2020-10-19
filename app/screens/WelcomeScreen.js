@@ -1,8 +1,8 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, View } from "react-native";
 
-import AppText from "../components/AppText";
-import AppButton from "../components/AppButton";
+import Text from "../components/Text";
+import Button from "../components/Button";
 import defaultStyles from "../config/styles";
 
 export default function WelcomeScreen() {
@@ -14,11 +14,11 @@ export default function WelcomeScreen() {
     >
       <View style={styles.logoBox}>
         <Image style={styles.logo} source={require("../assets/logo-red.png")} />
-        <AppText style={styles.tagline}>Sell What You Don't Need</AppText>
+        <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton text="Login" onPress={() => console.log("Login Tapped")} />
-        <AppButton
+        <Button text="Login" onPress={() => console.log("Login Tapped")} />
+        <Button
           text="Register"
           color="secondary"
           onPress={() => console.log("Register Tapped")}
