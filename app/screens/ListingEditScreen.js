@@ -7,6 +7,7 @@ import {
   FormField,
   FormPicker as Picker,
   SubmitButton,
+  FormImage,
 } from "../components/forms";
 import Screen from "../components/Screen";
 import CategoryPickerItem from "../components/CategoryPickerItem";
@@ -88,6 +89,7 @@ export default function ListingEditScreen() {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
+        {/* <FormImage icon='airplay' /> */}
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
