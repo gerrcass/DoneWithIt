@@ -89,7 +89,7 @@ export default function ListingEditScreen() {
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {/* <FormImage icon='airplay' /> */}
+        <FormImage name="image" />
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
