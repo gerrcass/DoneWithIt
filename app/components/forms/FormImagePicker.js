@@ -4,15 +4,18 @@ import { useFormikContext } from "formik";
 import ErrorMessage from "./ErrorMessage";
 import ImageInputList from "../ImageInputList";
 
-export default function AppFormImage({ name }) {
-  const [imageUris, setImageUris] = useState([]);
-  const { errors, touched } = useFormikContext();
+export default function AppFormImagePicker({ name }) {
+  const { errors, setFieldValue, touched, values } = useFormikContext();
+  const imageUris = values[name];
 
   const handleAdd = (uri) => {
-    setImageUris([...imageUris, uri]);
+    setFieldValue(name, [...imageUris, uri]);
   };
   const handleRemove = (uri) => {
-    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+    setFieldValue(
+      name,
+      imageUris.filter((imageUri) => imageUri !== uri)
+    );
   };
 
   return (
