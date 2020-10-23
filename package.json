@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "~39.0.2",
+    "expo": "location",
     "expo-constants": "^9.2.0",
     "expo-status-bar": "~1.0.2",
     "formik": "^2.2.0",
@@ -19,7 +19,8 @@
     "react-native-web": "~0.13.12",
     "yup": "^0.29.3",
     "expo-image-picker": "~9.1.0",
-    "expo-permissions": "~9.3.0"
+    "expo-permissions": "~9.3.0",
+    "expo-location": "~9.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

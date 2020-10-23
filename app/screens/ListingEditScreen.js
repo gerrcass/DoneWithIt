@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import * as Location from "expo-location";
 
 import {
   Form,
@@ -78,6 +79,24 @@ const categories = [
 ];
 
 export default function ListingEditScreen() {
+  const [location, setLocation] = useState();
+  const getLocation = async () => {
+    try {
+      const { granted } = await Location.requestPermissionsAsync();
+      if (!granted) return;
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getLastKnownPositionAsync(); // getCurrentPositionAsync would take several second and slow down the app (for this case is last know position is good enough).
+      setLocation({ latitude, longitude });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
+
   return (
     <Screen style={styles.container}>
       <Form
@@ -88,7 +107,7 @@ export default function ListingEditScreen() {
           category: null,
           images: [], //because this property will never be null, validation schema doesn't use .required()
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.log(values, location)}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />

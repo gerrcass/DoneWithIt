@@ -20,9 +20,9 @@ export default function ImageInput({ imageUri, onChangeImage }) {
   const requestPermission = async () => {
     //const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
     const { granted } = await Permissions.askAsync(
-      Permissions.CAMERA_ROLL
+      Permissions.CAMERA_ROLL,
       //Permissions.NOTIFICATIONS,
-      //Permissions.LOCATION
+      Permissions.LOCATION
     );
 
     if (!granted) alert("You need to enable permission to access the library.");
