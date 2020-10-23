@@ -17,6 +17,7 @@ const validationSchema = Yup.object().shape({
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
+  images: Yup.array().min(1, "Please select at least one image."), // .label("Images") would lead to "Images field is required"
 });
 
 const categories = [
@@ -85,11 +86,12 @@ export default function ListingEditScreen() {
           price: "",
           description: "",
           category: null,
+          images: [], //because this property will never be null, validation schema doesn't use .required()
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <FormImagePicker name="image" />
+        <FormImagePicker name="images" />
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
