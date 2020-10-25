@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 import defaultStyles from "../config/styles";
+import Text from "./Text";
 
 export default function AppButton({ title, onPress, color = "primary" }) {
   return (

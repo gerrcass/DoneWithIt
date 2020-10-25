@@ -5,7 +5,7 @@ import Text from "../components/Text";
 import Button from "../components/Button";
 import defaultStyles from "../config/styles";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       blurRadius={3}
@@ -17,11 +17,11 @@ export default function WelcomeScreen() {
         <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button text="Login" onPress={() => console.log("Login Tapped")} />
+        <Button title="Login" onPress={() => navigation.navigate("Login")} />
         <Button
-          text="Register"
+          title="Register"
           color="secondary"
-          onPress={() => console.log("Register Tapped")}
+          onPress={() => navigation.navigate("Register")}
         />
       </View>
 
