@@ -12,7 +12,7 @@ export default function Screen({ children, style }) {
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: Constants.statusBarHeight + 3, // if not +3 then ListingEditScreen's animation modal doesn't cover the entire screen (?)
     flex: 1,
   },
   innerContainer: {

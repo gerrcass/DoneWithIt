@@ -7,8 +7,10 @@ import {
   Alert,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import * as Permissions from "expo-permissions";
+
 import * as ImagePicker from "expo-image-picker";
+import * as Location from "expo-location";
+import { Camera } from "expo-camera";
 
 import defaultStyles from "../config/styles";
 
@@ -18,14 +20,22 @@ export default function ImageInput({ imageUri, onChangeImage }) {
   }, []);
 
   const requestPermission = async () => {
-    //const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
-    const { granted } = await Permissions.askAsync(
-      Permissions.CAMERA_ROLL,
-      //Permissions.NOTIFICATIONS,
-      Permissions.LOCATION
-    );
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const locationPermission =
+      await Location.requestForegroundPermissionsAsync();
+    const cameraPermission = await Camera.requestCameraPermissionsAsync();
 
     if (!granted) alert("You need to enable permission to access the library.");
+
+    if (!locationPermission) {
+      console.log("Permission to access location was denied");
+      return;
+    }
+
+    if (!cameraPermission.granted) {
+      console.log("Permission to access camera was denied");
+      return;
+    }
   };
 
   const handlePress = () => {
@@ -42,12 +52,12 @@ export default function ImageInput({ imageUri, onChangeImage }) {
 
   const selectImage = async () => {
     try {
-      const { cancelled, uri } = await ImagePicker.launchImageLibraryAsync({
+      const { canceled, assets } = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         quality: 0.5,
       });
 
-      if (!cancelled) onChangeImage(uri);
+      if (!canceled) onChangeImage(assets[0].uri);
     } catch (error) {
       console.log("Error reading an image", error);
     }
